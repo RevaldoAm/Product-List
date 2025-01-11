@@ -13,7 +13,6 @@ const ProductTable: React.FC = () => {
   const { data: products, isLoading, isError, error } = useProducts();
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  // Filter data based on search query
   const filteredData = useMemo(() => {
     if (!searchQuery) return products;
     return products?.filter((product) =>
@@ -51,17 +50,15 @@ const ProductTable: React.FC = () => {
     getPaginationRowModel: getPaginationRowModel(),
   });
 
-  // Loading state
   if (isLoading) {
     return (
       <div className="loading-container">
-        <div className="spinner">Loading...</div> {/* You can replace this with a spinner component */}
+        <div className="spinner">Loading...</div>
         <p>Loading products...</p>
       </div>
     );
   }
 
-  // Error state
   if (isError) {
     return (
       <div className="error-container">
@@ -75,7 +72,6 @@ const ProductTable: React.FC = () => {
 
   return (
     <div className="table-container">
-      {/* Search input */}
       <div className="search-container">
         <input
           type="text"
@@ -86,7 +82,6 @@ const ProductTable: React.FC = () => {
         />
       </div>
 
-      {/* Table */}
       <table className="product-table">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -116,7 +111,6 @@ const ProductTable: React.FC = () => {
         </tbody>
       </table>
 
-      {/* Pagination */}
       <div className="pagination-container">
         <button
           className="pagination-button"
